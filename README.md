@@ -3,7 +3,7 @@
 My day app helps to keep track of my day to day activities and helps you to say organized by separating your task into Todo, Place to go, People to speak with
 
 #### App Screenshot
-<img src="./app_screenshot.png" alt="Leader Board" />
+<img src="./app_screenshot.png" alt="My Day" />
 <!-- 
 ### Live Demo
 <a href="https://ishmaelkargbo.github.io/my-day">My Day</a> -->
