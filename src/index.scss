@@ -1,0 +1,29 @@
+$bgColor: white;
+$backdropColor: rgb(202, 202, 202);
+$textColor: #3a4a5a;
+$font: Poppins,
+"Courier New",
+Courier,
+monospace;
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: $bgColor;
+    padding: 10px 0;
+    font-family: $font;
+}
+
+.main-container {
+    background-color: $bgColor;
+    height: 100%;
+    width: 365px;
+    margin: 0 auto;
+    padding-top: 100px;
+    .title {
+        color: $textColor;
+        font-weight: 600;
+    }
+}
