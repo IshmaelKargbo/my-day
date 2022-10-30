@@ -1,0 +1,97 @@
+$bgColor: #f5f8fa;
+$taskBgColor: white;
+$backdropColor: rgb(202, 202, 202);
+$textColor: #3a4a5a;
+$todoColor: rgb(155, 133, 23);
+$placeColor: rgb(27, 192, 52);
+$peopleColor: rgb(27, 85, 192);
+$radius: 5px;
+$taskBtn: rgb(144, 144, 144);
+$font: Poppins,
+"Courier New",
+Courier,
+monospace;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@mixin task-title($color) {
+    background: $color;
+    color: white;
+    position: absolute;
+    padding: 3px 15px;
+    border-radius: $radius;
+    font-size: 0.8rem;
+    font-weight: 500;
+    top: -12px;
+}
+
+body {
+    background-color: $bgColor;
+    padding: 10px 0;
+    font-family: $font;
+    color: $textColor;
+}
+
+.main-container {
+    background-color: $bgColor;
+    height: 100%;
+    width: 365px;
+    margin: 0 auto;
+    padding-top: 100px;
+    .title {
+        color: $textColor;
+        font-weight: 600;
+    }
+}
+
+.task-container {
+    margin: 2rem 0;
+    background-color: $taskBgColor;
+    position: relative;
+    padding: 0.6rem;
+    border-radius: $radius;
+    box-shadow: 0px 0px 2px rgb(198, 198, 198);
+    // Task Title
+    .todo {
+        @include task-title($todoColor);
+    }
+    .place {
+        @include task-title($placeColor);
+    }
+    .people {
+        @include task-title($peopleColor);
+    }
+    // Task Header
+    .header {
+        display: flex;
+        justify-content: end;
+        .add-btn {
+            background-color: transparent;
+            font-size: 1rem;
+            border: none;
+            font-weight: lighter;
+            border: 1px solid $taskBtn;
+            color: $taskBtn;
+            padding: 1px 5.5px;
+            border-radius: 20px;
+        }
+    }
+    // Task List
+    .list {
+        list-style: none;
+        .row {
+            display: flex;
+            margin-bottom: 0.3rem;
+            .task {
+                padding-left: 8px;
+                cursor: pointer;
+            }
+        }
+         :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
