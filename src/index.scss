@@ -7,6 +7,7 @@ $placeColor: rgb(27, 192, 52);
 $peopleColor: rgb(27, 85, 192);
 $radius: 5px;
 $taskBtn: rgb(144, 144, 144);
+$borderColor: rgb(221, 221, 221);
 $font: Poppins,
 "Courier New",
 Courier,
@@ -35,10 +36,79 @@ body {
     color: $textColor;
 }
 
+.footer {
+    border-top: 1px solid $borderColor;
+    padding-top: 10px;
+}
+
+.form-field {
+    label {
+        font-size: 14px;
+        margin-bottom: 3px;
+        color: rgb(122, 122, 122);
+        display: block;
+    }
+    margin-bottom: 15px;
+}
+
+@mixin form-btn($bg, $color: white) {
+    background: $bg;
+    color: $color;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 0px 0px 2px rgb(198, 198, 198);
+    border-radius: $radius;
+}
+
+.btn-primary {
+    @include form-btn($placeColor);
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    border: 1px solid $taskBtn;
+    padding: 10px;
+    border-radius: $radius;
+}
+
+.app {
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #00000080;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .container {
+            background: $bgColor;
+            width: 360px;
+            border-radius: $radius;
+            .close-btn {
+                background: transparent;
+                border: none;
+                color: $taskBtn;
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 15px;
+                border-bottom: 1px solid $borderColor;
+            }
+            .body {
+                padding: 10px 15px;
+            }
+        }
+    }
+}
+
 .main-container {
     background-color: $bgColor;
     height: 100%;
-    width: 365px;
+    width: 360px;
     margin: 0 auto;
     padding-top: 100px;
     .title {
@@ -67,7 +137,7 @@ body {
     // Task Header
     .header {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         .add-btn {
             background-color: transparent;
             font-size: 1rem;
