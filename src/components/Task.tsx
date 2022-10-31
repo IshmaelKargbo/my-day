@@ -5,10 +5,13 @@ interface Prop {
 }
 
 export const TaskRow = ({ task }: Prop) => {
-    const handleState = ({ target }: any) => {}
+    const handleState = ({ target }: any) => { }
 
     return <div className="row">
-        <input id="task1" checked={task.state} onChange={handleState} type="checkbox" />
-        <label htmlFor="task1" className="task">{task.task}</label>
+        <div className="state-task">
+            <input id="task1" checked={task.state} onChange={handleState} type="checkbox" />
+            <label htmlFor="task1" className="task">{task.task}</label>
+        </div>
+        <p className="date">{task.date}</p>
     </div>
 }
