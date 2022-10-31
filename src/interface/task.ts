@@ -6,11 +6,13 @@ export const today = () => {
 export interface Task {
     task: string
     date: string
+    priority: string
     state: boolean
 }
 
 export const newTask: Task = {
     task: "",
     date: today(),
-    state: false
+    state: false,
+    priority: "Low"
 }
