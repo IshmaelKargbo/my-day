@@ -23,10 +23,7 @@ export const Todos = () => {
 
     return <>
         <section className='task-container'>
-            <h4 className='title todo'>TODO</h4>
-            <div className='header'>
-                <button onClick={add} className='add-btn'>+</button>
-            </div>
+            <h4 className='title todo'>HIGH</h4>
             <ul className="list">
                 {
                     tasks.map((task, key) => (
@@ -40,7 +37,7 @@ export const Todos = () => {
                 tasks.length === 0 ? <p className="empty">No Todo</p> : null
             }
         </section>
-
+        <button className="add-btn" onClick={add}>+</button>
         <AddTodo onSave={todoSave} visible={visible} onClose={onClose} />
     </>
 }
