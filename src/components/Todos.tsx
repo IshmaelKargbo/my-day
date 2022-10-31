@@ -23,7 +23,37 @@ export const Todos = () => {
 
     return <>
         <section className='task-container'>
-            <h4 className='title todo'>HIGH</h4>
+            <h4 className='title high'>HIGH</h4>
+            <ul className="list">
+                {
+                    tasks.map((task, key) => (
+                        <li key={key}>
+                            <TaskRow task={task} />
+                        </li>
+                    ))
+                }
+            </ul>
+            {
+                tasks.length === 0 ? <p className="empty">No Todo</p> : null
+            }
+        </section>
+        <section className='task-container'>
+            <h4 className='title medium'>MEDIUM</h4>
+            <ul className="list">
+                {
+                    tasks.map((task, key) => (
+                        <li key={key}>
+                            <TaskRow task={task} />
+                        </li>
+                    ))
+                }
+            </ul>
+            {
+                tasks.length === 0 ? <p className="empty">No Todo</p> : null
+            }
+        </section>
+        <section className='task-container'>
+            <h4 className='title low'>LOW</h4>
             <ul className="list">
                 {
                     tasks.map((task, key) => (
