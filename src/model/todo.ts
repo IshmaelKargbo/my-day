@@ -3,6 +3,7 @@ import { Task, today } from "../interface/task";
 export class Todo {
     private _task: string = "";
     private _date: string = today();
+    private _priority: string = "";
     private _state: boolean = false;
 
     static newTodo(task: Task): Todo {
@@ -26,6 +27,7 @@ export class Todo {
         todo.setState = task.state;
         todo.setTask = task.task;
         todo.setDate = task.date;
+        todo.setPriority = task.priority;
 
         return todo;
     }
@@ -42,10 +44,16 @@ export class Todo {
         return this._state;
     }
 
+    get priority() : string {
+        return this._priority;
+    }
+    
+
     get toString(): string {
         const task = {
             task: this._task,
             date: this._date,
+            priority: this._priority,
             state: this._state
         }
 
@@ -56,7 +64,8 @@ export class Todo {
         return {
             date: this._date,
             task: this._task,
-            state: this._state
+            state: this._state,
+            priority: this._priority
         }
     }
 
@@ -71,4 +80,9 @@ export class Todo {
     set setState(v: boolean) {
         this._state = v;
     }
+    
+    set setPriority(v : string) {
+        this._priority = v;
+    }
+    
 }
