@@ -2,9 +2,10 @@ $bgColor: #f5f8fa;
 $taskBgColor: white;
 $backdropColor: rgb(202, 202, 202);
 $textColor: #3a4a5a;
-$todoColor: rgb(155, 52, 23);
-$placeColor: rgb(27, 192, 52);
-$peopleColor: rgb(27, 85, 192);
+$formBtn: rgb(2, 143, 25);
+$highColor: rgb(155, 52, 23);
+$mediumColor: rgb(203, 178, 11);
+$lowColor: rgb(65, 128, 170);
 $radius: 5px;
 $taskBtn: rgb(144, 144, 144);
 $borderColor: rgb(221, 221, 221);
@@ -61,7 +62,7 @@ body {
 }
 
 .btn-primary {
-    @include form-btn($placeColor);
+    @include form-btn($formBtn);
 }
 
 .form-input {
@@ -70,6 +71,25 @@ body {
     border: 1px solid $taskBtn;
     padding: 10px;
     border-radius: $radius;
+}
+
+.priority {
+    display: flex;
+    .radio {
+        display: flex;
+        align-items: center;
+        margin: 0 12px;
+         :last-child {
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+    }
+     :first-child {
+        margin-left: 0;
+    }
+     :first-child {
+        margin-right: 0;
+    }
 }
 
 .modal {
@@ -140,41 +160,34 @@ body {
     border-radius: $radius;
     box-shadow: 0px 0px 2px rgb(198, 198, 198);
     // Task Title
-    .todo {
-        @include task-title($todoColor);
+    .high {
+        @include task-title($highColor);
     }
-    .place {
-        @include task-title($placeColor);
+    .medium {
+        @include task-title($mediumColor);
     }
-    .people {
-        @include task-title($peopleColor);
+    .low {
+        @include task-title($lowColor);
     }
-    // // Task Header
-    // .header {
-    //     display: flex;
-    //     justify-content: flex-end;
-    //     .add-btn {
-    //         background-color: transparent;
-    //         font-size: 1rem;
-    //         border: none;
-    //         font-weight: lighter;
-    //         border: 1px solid $taskBtn;
-    //         color: $taskBtn;
-    //         padding: 1px 5.5px;
-    //         border-radius: 20px;
-    //     }
-    // }
-    // Task List
     .list {
         list-style: none;
         padding-top: 0.9rem;
         .row {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 0.5rem;
-            .task {
-                padding-left: 8px;
-                cursor: pointer;
-                font-size: 0.9rem;
+            .state-task {
+                display: flex;
+                .task {
+                    padding-left: 8px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                }
+            }
+            .date {
+                font-size: 10px;
+                color: #aaa;
             }
         }
     }
