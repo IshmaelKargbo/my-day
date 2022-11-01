@@ -21,6 +21,11 @@ export const Todos = () => {
         setVisible(true);
     }
 
+    const onUpdate = (todo: Todo) => {
+        store.update(todo.toTask);
+        fetchTodos();
+    }
+
     const fetchTodos = () => {
         const {high, low, medium} = store.data();
 
@@ -46,7 +51,7 @@ export const Todos = () => {
                 {
                     highs.map((task, key) => (
                         <li key={key}>
-                            <TaskRow task={task} />
+                            <TaskRow onUpdate={onUpdate} todo={task} />
                         </li>
                     ))
                 }
@@ -61,7 +66,7 @@ export const Todos = () => {
                 {
                     mediums.map((task, key) => (
                         <li key={key}>
-                            <TaskRow task={task} />
+                            <TaskRow onUpdate={onUpdate} todo={task} />
                         </li>
                     ))
                 }
@@ -76,7 +81,7 @@ export const Todos = () => {
                 {
                     lows.map((task, key) => (
                         <li key={key}>
-                            <TaskRow task={task} />
+                            <TaskRow onUpdate={onUpdate} todo={task} />
                         </li>
                     ))
                 }

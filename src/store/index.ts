@@ -18,12 +18,9 @@ export class Store {
             if (todo) lists.push(todo);
         });
 
-        const high = lists.filter(todo => todo.priority === "High");
-        const medium = lists.filter(todo => todo.priority === "Medium");
-        const low = lists.filter(todo => todo.priority === "Low");
-
-        console.log(low, high);
-
+        const high = lists.filter(todo => todo.priority === "High").reverse();
+        const medium = lists.filter(todo => todo.priority === "Medium").reverse();
+        const low = lists.filter(todo => todo.priority === "Low").reverse();
 
         return { high, medium, low };
     }

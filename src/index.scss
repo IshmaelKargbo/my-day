@@ -1,14 +1,15 @@
 $bgColor: #dfe9ee;
 $taskBgColor: white;
-$backdropColor: rgb(202, 202, 202);
+$backdropColor: #cacaca;
 $textColor: #3a4a5a;
-$formBtn: rgb(2, 143, 25);
-$highColor: rgb(155, 52, 23);
-$mediumColor: rgb(203, 178, 11);
-$lowColor: rgb(65, 128, 170);
+$formBtn: #028f19;
+$highColor: #9b3417;
+$mediumColor: #cbb20b;
+$lowColor: #4180aa;
 $radius: 5px;
-$taskBtn: rgb(144, 144, 144);
-$borderColor: rgb(221, 221, 221);
+$taskBtn: #909090;
+$borderColor: #dddddd;
+$complete: #c2c2c2;
 $font: Poppins,
 "Courier New",
 Courier,
@@ -171,23 +172,26 @@ body {
     }
     .list {
         list-style: none;
-        padding-top: 0.9rem;
+        padding-top: 0.5rem;
         .row {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            .state-task {
-                display: flex;
-                .task {
-                    padding-left: 8px;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                }
+            align-items: flex-start;
+            padding-top: 15px;
+            .task {
+                padding-left: 8px;
+                cursor: pointer;
+                font-size: 0.9rem;
+                margin-top: -3.7px;
             }
             .date {
-                font-size: 10px;
-                color: #aaa;
+                color: #d08e12;
+            }
+            .state:checked~.task,
+            .state:checked~.task>.date {
+                color: $complete;
+            }
+            .state:checked~.task {
+                text-decoration: line-through;
             }
         }
     }

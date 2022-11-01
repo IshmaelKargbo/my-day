@@ -68,7 +68,7 @@ export class Todo {
         return JSON.stringify(task);
     }
 
-    get data(): Task {
+    get toTask(): Task {
         return {
             id: this._id,
             date: this._date,
