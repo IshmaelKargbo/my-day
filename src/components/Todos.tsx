@@ -21,7 +21,7 @@ export const Todos = () => {
         fetchTodos();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
+
 
     useEffect(() => {
         fetchTodos();
@@ -104,21 +104,23 @@ export const Todos = () => {
                 {lows.length === 0 ? <p className="empty">No Todo</p> : null}
             </section>
             <div className="bottom-btn">
-                {history ? (
-                    <button className="add-btn" onClick={hideHistory}>
-                        <MdOutlineFreeCancellation />
+                <div className="row">
+                    {history ? (
+                        <button className="add-btn" onClick={hideHistory}>
+                            <MdOutlineFreeCancellation />
+                        </button>
+                    ) : (
+                        <button className="add-btn" onClick={showHistory}>
+                            <BsClockHistory />
+                        </button>
+                    )}
+                    <button className="add-btn" onClick={cleanHistory}>
+                        <MdHistory />
                     </button>
-                ) : (
-                    <button className="add-btn" onClick={showHistory}>
-                        <BsClockHistory />
+                    <button className="add-btn" onClick={add}>
+                        <TfiPlus />
                     </button>
-                )}
-                <button className="add-btn" onClick={cleanHistory}>
-                    <MdHistory />
-                </button>
-                <button className="add-btn" onClick={add}>
-                    <TfiPlus />
-                </button>
+                </div>
             </div>
             <AddTodo onSave={todoSave} visible={visible} onClose={onClose} />
         </>
