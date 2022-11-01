@@ -1,4 +1,4 @@
-export const uid = () => `MD${Math.random().toString(16).substring(2, 8)}`;
+export const uid = () => `md${Math.random().toString(16).substring(2, 8)}`;
 
 export const today = () => {
     const dates = new Date().toLocaleDateString().split("/");

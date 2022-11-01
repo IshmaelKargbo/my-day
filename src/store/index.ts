@@ -9,6 +9,25 @@ export class Store {
         return new Store();
     }
 
+    data() {
+        const lists: Array<Todo> = [];
+        const keys = Object.keys(localStorage);
+
+        keys.forEach(key => {
+            const todo = this.fromStore(key);
+            if (todo) lists.push(todo);
+        });
+
+        const high = lists.filter(todo => todo.priority === "High");
+        const medium = lists.filter(todo => todo.priority === "Medium");
+        const low = lists.filter(todo => todo.priority === "Low");
+
+        console.log(low, high);
+
+
+        return { high, medium, low };
+    }
+
     add(task: Task) {
         const key = uid();
         const todo = Todo.newTodo(task);
@@ -24,5 +43,11 @@ export class Store {
         const key = task.id;
         const todo = Todo.newTodo(task);
         this.store.setItem(key, todo.toString);
+    }
+
+    private fromStore(key: string) {
+        const task = this.store.getItem(key);
+        if (task) return Todo.fromString(task);
+        return null;
     }
 }
