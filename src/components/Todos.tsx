@@ -6,9 +6,11 @@ import { AddTodo } from "./AddTodo";
 import { TaskRow } from "./Task";
 import { TfiPlus } from "react-icons/tfi";
 import { MdHistory } from "react-icons/md";
+import { BsClockHistory } from "react-icons/bs";
 
 export const Todos = () => {
     const [visible, setVisible] = useState(false);
+    const [history, setHistory] = useState(false);
     const store = Store.open();
 
     const [highs, setHighs] = useState<Array<Todo>>([]);
@@ -19,17 +21,20 @@ export const Todos = () => {
         fetchTodos();
     }, []);
 
+    useEffect(() => {
+        fetchTodos();
+    }, [history]);
+
     const add = () => {
         setVisible(true);
     }
 
     const onUpdate = (todo: Todo) => {
         store.update(todo.toTask);
-        fetchTodos();
     }
 
     const fetchTodos = () => {
-        const { high, low, medium } = store.data();
+        const { high, low, medium } = store.data(history);
 
         setHighs(high);
         setLows(low);
@@ -48,6 +53,11 @@ export const Todos = () => {
 
     const cleanHistory = () => {
         store.cleanHistory();
+        fetchTodos();
+    }
+
+    const showHistory =() => {
+        setHistory(true);
         fetchTodos();
     }
 
@@ -98,7 +108,7 @@ export const Todos = () => {
             }
         </section>
         <div className="bottom-btn">
-            
+            <button className="add-btn" onClick={showHistory}><BsClockHistory /></button>
             <button className="add-btn" onClick={cleanHistory}><MdHistory /></button>
             <button className="add-btn" onClick={add}><TfiPlus /></button>
         </div>

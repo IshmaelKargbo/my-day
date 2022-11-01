@@ -9,13 +9,14 @@ export class Store {
         return new Store();
     }
 
-    data() {
+    data(history = false) {
         const lists: Array<Todo> = [];
         const keys = Object.keys(localStorage);
 
         keys.forEach(key => {
             const todo = this.fromStore(key);
-            if (todo && !todo.state) lists.push(todo);
+            if (todo)
+                if (history && (todo.state || !todo.state)) lists.push(todo);
         });
 
         const high = lists.filter(todo => todo.priority === "High").reverse();
