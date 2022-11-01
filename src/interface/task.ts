@@ -4,6 +4,7 @@ export const today = () => {
 }
 
 export interface Task {
+    id: string
     task: string
     date: string
     priority: string
@@ -11,6 +12,7 @@ export interface Task {
 }
 
 export const newTask: Task = {
+    id: Date.now().toString(),
     task: "",
     date: today(),
     state: false,
