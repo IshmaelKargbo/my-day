@@ -1,13 +1,15 @@
-$bgColor: #f5f8fa;
+$bgColor: #dfe9ee;
 $taskBgColor: white;
-$backdropColor: rgb(202, 202, 202);
+$backdropColor: #cacaca;
 $textColor: #3a4a5a;
-$todoColor: rgb(155, 52, 23);
-$placeColor: rgb(27, 192, 52);
-$peopleColor: rgb(27, 85, 192);
+$formBtn: #028f19;
+$highColor: #9b3417;
+$mediumColor: #cbb20b;
+$lowColor: #4180aa;
 $radius: 5px;
-$taskBtn: rgb(144, 144, 144);
-$borderColor: rgb(221, 221, 221);
+$taskBtn: #909090;
+$borderColor: #dddddd;
+$complete: #c2c2c2;
 $font: Poppins,
 "Courier New",
 Courier,
@@ -61,7 +63,7 @@ body {
 }
 
 .btn-primary {
-    @include form-btn($placeColor);
+    @include form-btn($formBtn);
 }
 
 .form-input {
@@ -70,6 +72,25 @@ body {
     border: 1px solid $taskBtn;
     padding: 10px;
     border-radius: $radius;
+}
+
+.priority {
+    display: flex;
+    .radio {
+        display: flex;
+        align-items: center;
+        margin: 0 12px;
+         :last-child {
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+    }
+     :first-child {
+        margin-left: 0;
+    }
+     :first-child {
+        margin-right: 0;
+    }
 }
 
 .modal {
@@ -83,7 +104,7 @@ body {
     justify-content: center;
     align-items: center;
     .container {
-        background: $bgColor;
+        background: $taskBgColor;
         width: 360px;
         border-radius: $radius;
         .close-btn {
@@ -103,19 +124,26 @@ body {
     }
 }
 
-.add-btn {
-    background-color: $textColor;
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
+.bottom-btn {
     position: absolute;
     bottom: 0;
     right: 0;
-    font-size: 2rem;
-    margin: 2.5rem 1.5rem;
-    border-radius: 30px;
-    box-shadow: 0px 0px 2px rgb(198, 198, 198);
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .add-btn {
+        background-color: $textColor;
+        display: block;
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        margin: 2.5rem 0;
+        border-radius: 30px;
+        box-shadow: 0px 0px 2px rgb(198, 198, 198);
+        padding-top: 2px;
+    }
 }
 
 .main-container {
@@ -140,48 +168,44 @@ body {
     border-radius: $radius;
     box-shadow: 0px 0px 2px rgb(198, 198, 198);
     // Task Title
-    .todo {
-        @include task-title($todoColor);
+    .high {
+        @include task-title($highColor);
     }
-    .place {
-        @include task-title($placeColor);
+    .medium {
+        @include task-title($mediumColor);
     }
-    .people {
-        @include task-title($peopleColor);
+    .low {
+        @include task-title($lowColor);
     }
-    // // Task Header
-    // .header {
-    //     display: flex;
-    //     justify-content: flex-end;
-    //     .add-btn {
-    //         background-color: transparent;
-    //         font-size: 1rem;
-    //         border: none;
-    //         font-weight: lighter;
-    //         border: 1px solid $taskBtn;
-    //         color: $taskBtn;
-    //         padding: 1px 5.5px;
-    //         border-radius: 20px;
-    //     }
-    // }
-    // Task List
     .list {
         list-style: none;
-        padding-top: 0.9rem;
+        padding-top: 0.5rem;
         .row {
             display: flex;
-            margin-bottom: 0.5rem;
+            align-items: flex-start;
+            padding-top: 15px;
             .task {
                 padding-left: 8px;
                 cursor: pointer;
                 font-size: 0.9rem;
+                margin-top: -3.7px;
+            }
+            .date {
+                color: #d08e12;
+            }
+            .state:checked~.task,
+            .state:checked~.task>.date {
+                color: $complete;
+            }
+            .state:checked~.task {
+                text-decoration: line-through;
             }
         }
     }
     .empty {
         text-align: center;
         color: #ccc;
-        font-size: 1rem;
+        font-size: 0.8rem;
         margin: 10px 0;
     }
 }

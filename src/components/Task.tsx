@@ -1,14 +1,20 @@
-import { Task } from "../interface/task";
+import { Todo } from "../model/todo";
 
 interface Prop {
-    task: Task
+    todo: Todo
+    onUpdate: Function
 }
 
-export const TaskRow = ({ task }: Prop) => {
-    const handleState = ({ target }: any) => {}
+export const TaskRow = ({ todo, onUpdate }: Prop) => {
+
+    const handleClick = ({ target }: any) => {
+        const state = target.checked;
+        todo.setState = state;
+        onUpdate(todo);
+    };
 
     return <div className="row">
-        <input id="task1" checked={task.state} onChange={handleState} type="checkbox" />
-        <label htmlFor="task1" className="task">{task.task}</label>
+        <input id={todo.id} checked={todo.state} onChange={handleClick} type="checkbox" className="state" />
+        <label htmlFor={todo.id} className="task">{todo.task} on <span className="date">{todo.date}</span></label>
     </div>
 }
