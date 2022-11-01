@@ -31,6 +31,7 @@ export const Todos = () => {
 
     const onUpdate = (todo: Todo) => {
         store.update(todo.toTask);
+        fetchTodos();
     };
 
     const fetchTodos = () => {
