@@ -1,6 +1,6 @@
 # My Day
 
-My day app helps to keep track of my day to day activities and helps you to say organized by separating your task into Todo, Place to go, People to speak with
+My day app helps to keep track of my day to day activities and helps you to say organized by separating your task priority into High, Medium and Low 
 
 #### App Screenshot
 <img src="./app_screenshot.png" alt="My Day" />
