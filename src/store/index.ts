@@ -15,8 +15,10 @@ export class Store {
 
         keys.forEach(key => {
             const todo = this.fromStore(key);
-            if (todo)
-                if (history && (todo.state || !todo.state)) lists.push(todo);
+            if (todo) {
+                if (history) lists.push(todo);
+                else if (!todo.state && !history) lists.push(todo);
+            }
         });
 
         const high = lists.filter(todo => todo.priority === "High").reverse();
