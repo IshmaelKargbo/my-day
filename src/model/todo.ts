@@ -1,7 +1,7 @@
-import { Task, today } from "../interface/task";
+import { Task, today, uid } from "../interface/task";
 
 export class Todo {
-    private _id: string = Date.now().toString();
+    private _id: string = uid();
     private _task: string = "";
     private _date: string = today();
     private _priority: string = "";

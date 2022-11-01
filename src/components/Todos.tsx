@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Task } from "../interface/task";
+import { Store } from "../store";
 import { AddTodo } from "./AddTodo";
 import { TaskRow } from "./Task";
 
 export const Todos = () => {
     const [visible, setVisible] = useState(false);
+    const store = Store.open();
     const [tasks, setTasks] = useState<Array<Task>>([]);
 
     const add = () => {
@@ -17,8 +19,7 @@ export const Todos = () => {
 
     const todoSave = (task: Task) => {
         setVisible(false);
-        tasks.push(task);
-        setTasks(tasks);
+        store.add(task);
     }
 
     return <>

@@ -1,4 +1,4 @@
-import { Task } from "../interface/task";
+import { Task, uid } from "../interface/task";
 import { Todo } from "../model/todo";
 
 export class Store {
@@ -10,8 +10,9 @@ export class Store {
     }
 
     add(task: Task) {
-        const key = task.id;
+        const key = uid();
         const todo = Todo.newTodo(task);
+        todo.setId = key;
         this.store.setItem(key, todo.toString);
     }
 

@@ -1,4 +1,4 @@
-$bgColor: #f5f8fa;
+$bgColor: #bee1f2;
 $taskBgColor: white;
 $backdropColor: rgb(202, 202, 202);
 $textColor: #3a4a5a;
@@ -103,7 +103,7 @@ body {
     justify-content: center;
     align-items: center;
     .container {
-        background: $bgColor;
+        background: $taskBgColor;
         width: 360px;
         border-radius: $radius;
         .close-btn {

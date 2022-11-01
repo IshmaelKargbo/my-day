@@ -1,3 +1,5 @@
+export const uid = () => `MD${Math.random().toString(16).substring(2, 8)}`;
+
 export const today = () => {
     const dates = new Date().toLocaleDateString().split("/");
     return dates.reverse().join("-");
@@ -12,7 +14,7 @@ export interface Task {
 }
 
 export const newTask: Task = {
-    id: Date.now().toString(),
+    id: "",
     task: "",
     date: today(),
     state: false,
