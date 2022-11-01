@@ -4,11 +4,13 @@ import { Todo } from "../model/todo";
 import { Store } from "../store";
 import { AddTodo } from "./AddTodo";
 import { TaskRow } from "./Task";
+import { TfiPlus } from "react-icons/tfi";
+import { MdHistory } from "react-icons/md";
 
 export const Todos = () => {
     const [visible, setVisible] = useState(false);
     const store = Store.open();
-    
+
     const [highs, setHighs] = useState<Array<Todo>>([]);
     const [mediums, setMediums] = useState<Array<Todo>>([]);
     const [lows, setLows] = useState<Array<Todo>>([]);
@@ -27,7 +29,7 @@ export const Todos = () => {
     }
 
     const fetchTodos = () => {
-        const {high, low, medium} = store.data();
+        const { high, low, medium } = store.data();
 
         setHighs(high);
         setLows(low);
@@ -41,6 +43,11 @@ export const Todos = () => {
     const todoSave = (task: Task) => {
         setVisible(false);
         store.add(task);
+        fetchTodos();
+    }
+
+    const cleanHistory = () => {
+        store.cleanHistory();
         fetchTodos();
     }
 
@@ -90,7 +97,11 @@ export const Todos = () => {
                 lows.length === 0 ? <p className="empty">No Todo</p> : null
             }
         </section>
-        <button className="add-btn" onClick={add}>+</button>
+        <div className="bottom-btn">
+            
+            <button className="add-btn" onClick={cleanHistory}><MdHistory /></button>
+            <button className="add-btn" onClick={add}><TfiPlus /></button>
+        </div>
         <AddTodo onSave={todoSave} visible={visible} onClose={onClose} />
     </>
 }
