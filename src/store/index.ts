@@ -15,7 +15,7 @@ export class Store {
 
         keys.forEach(key => {
             const todo = this.fromStore(key);
-            if (todo) lists.push(todo);
+            if (todo && !todo.state) lists.push(todo);
         });
 
         const high = lists.filter(todo => todo.priority === "High").reverse();
@@ -40,6 +40,22 @@ export class Store {
         const key = task.id;
         const todo = Todo.newTodo(task);
         this.store.setItem(key, todo.toString);
+    }
+
+    cleanHistory() {
+        const lists: Array<Todo> = [];
+        const keys = Object.keys(localStorage);
+
+        keys.forEach(key => {
+            const todo = this.fromStore(key);
+            if (todo) lists.push(todo);
+        });
+
+        const history = lists.filter(todo => todo.state);
+
+        history.forEach(todo => {
+            this.remove(todo.id);
+        })
     }
 
     private fromStore(key: string) {
