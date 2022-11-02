@@ -6,7 +6,7 @@ My day app helps to keep track of my day to day activities and helps you to say 
 <img src="./app_screenshot.png" alt="My Day" />
 
 ### Live Demo
-<a href="https://6361a6317e88bb009f8729ba--profound-snickerdoodle-12f58a.netlify.app/">My Day</a>
+<a href="https://meday.netlify.app/">My Day</a>
 
 ## Built With
 
